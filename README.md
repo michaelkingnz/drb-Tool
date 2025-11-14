@@ -117,6 +117,18 @@ BASESCAN_API_KEY=your_basescan_key
 - **Uniswap Router**: `0x2626664c2603336E57B271c5C0b26F421741e481`
 - **Treasury**: `0xcc52c6A9f64930D01538ab6056A722f5C914E603`
 
+## Uniswap Swap + Burn Flow
+
+1. **Donation** → `harvest()` called with ETH  
+2. **50% ETH** → Swapped to $DRB via Uniswap V3  
+   - Router: `0x2626664c...`  
+   - Pool: DRB/WETH (0.3% fee)  
+3. **$DRB received** → Sent to `0x000...dEaD` (burned forever)  
+4. **Other 50% ETH** → Treasury (real debt relief)  
+
+**TWAP Protection**: 30-min average price used to prevent manipulation.  
+**Live on Base Sepolia**: [0x41c1...4DC3](https://sepolia.basescan.org/address/0x41c1c1997058697b93cCbFD3dfF46a64b0d74DC3)
+
 ## 🤝 Contributing
 
 1. Fork the repository
@@ -133,13 +145,14 @@ MIT License - see LICENSE file for details.
 
 This is experimental software. Use at your own risk. Always test on testnets first.
 
-# Frontend
+## Uniswap Swap + Burn Flow
 
-A simple web interface is provided in `index.html` and `app.js` for users to interact with the contract.
+1. **Donation** → `harvest()` called with ETH  
+2. **50% ETH** → Swapped to $DRB via Uniswap V3  
+   - Router: `0x2626664c...`  
+   - Pool: DRB/WETH (0.3% fee)  
+3. **$DRB received** → Sent to `0x000...dEaD` (burned forever)  
+4. **Other 50% ETH** → Treasury (real debt relief)  
 
-- Open `index.html` in a web browser with MetaMask installed
-- Connect your wallet (ensure you're on Base Sepolia network)
-- Enter the ETH amount to contribute
-- Click "Harvest & Burn DRB" to execute the transaction
-
-The interface shows the split: half to debt relief, half swapped and burned as DRB.
+**TWAP Protection**: 30-min average price used to prevent manipulation.  
+**Live on Base Sepolia**: [0x41c1...4DC3](https://sepolia.basescan.org/address/0x41c1c1997058697b93cCbFD3dfF46a64b0d74DC3)
