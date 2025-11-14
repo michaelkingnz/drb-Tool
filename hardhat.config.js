@@ -14,12 +14,18 @@ module.exports = {
       url: process.env.BASE_SEPOLIA_RPC_URL || "https://sepolia.base.org",
       accounts: privateKey ? [privateKey] : [],
       chainId: 84532
+    },
+    mainnet: {
+      url: process.env.MAINNET_RPC_URL || "https://eth.llamarpc.com",
+      accounts: privateKey ? [privateKey] : [],
+      chainId: 1
     }
   }
   ,
   etherscan: {
-    // Add an API key for BaseScan (set BASESCAN_API_KEY in your .env)
+    // Add API keys for scanning (set ETHERSCAN_API_KEY and BASESCAN_API_KEY in your .env)
     apiKey: {
+      mainnet: process.env.ETHERSCAN_API_KEY || "",
       baseSepolia: process.env.BASESCAN_API_KEY || ""
     },
     customChains: [
