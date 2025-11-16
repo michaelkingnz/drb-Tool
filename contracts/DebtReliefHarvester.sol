@@ -43,6 +43,8 @@ contract DebtReliefHarvester is ReentrancyGuard {
     event DrbPriceChanged(uint256 oldPrice, uint256 newPrice);
     event EmergencyWithdrawScheduled(address token, uint256 amount, address to);
     event EmergencyWithdrawExecuted(address token, uint256 amount, address to);
+    event DonationFailed(address indexed sender, uint256 ethAmount, string reason);
+    event AdminAction(address indexed admin, string action);
 
     uint256 public constant TIMELOCK_DURATION = 2 days;
 
@@ -199,8 +201,9 @@ contract DebtReliefHarvester is ReentrancyGuard {
 
     function scheduleSetSlippage(uint256 _percent) external {
         require(msg.sender == treasury, "Only treasury");
-        require(_percent >= 1 && _percent <= 100, "Slippage must be 1-100%");
+        require(_percent >= 50 && _percent <= 99, "Slippage must be 50-99%"); // Enhanced bounds checking
         pendingSlippageChanges[SLIPPAGE_KEY] = PendingSlippageChange(_percent, block.timestamp + TIMELOCK_DURATION);
+        emit AdminAction(msg.sender, "ScheduleSetSlippage");
     }
 
     function executeSetSlippage() external {
@@ -257,8 +260,9 @@ contract DebtReliefHarvester is ReentrancyGuard {
     }
 
     function getEthPrice() public view returns (uint256) {
-        (,int256 price,,,) = ethPriceFeed.latestRoundData();
+        (,int256 price,,uint256 updatedAt,) = ethPriceFeed.latestRoundData();
         require(price > 0, "Invalid price");
+        require(block.timestamp - updatedAt < 3600, "Stale price feed"); // Circuit breaker: 1 hour max staleness
         return uint256(price); // 8 decimals
     }
 
@@ -268,16 +272,22 @@ contract DebtReliefHarvester is ReentrancyGuard {
         return drbPrice;
     }
 
+    function version() public pure returns (string memory) {
+        return "1.0";
+    }
+
     function pause() external {
         require(msg.sender == treasury, "Only treasury");
         paused = true;
         emit Paused(msg.sender);
+        emit AdminAction(msg.sender, "Pause");
     }
 
     function unpause() external {
         require(msg.sender == treasury, "Only treasury");
         paused = false;
         emit Unpaused(msg.sender);
+        emit AdminAction(msg.sender, "Unpause");
     }
 
     function setSwapDeadline(uint256 _deadline) external {
