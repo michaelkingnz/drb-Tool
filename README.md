@@ -142,7 +142,7 @@ BASESCAN_API_KEY=your_basescan_key
 MIT License - see LICENSE file for details.
 
 ## 📜 DRB Debt Relief Harvester – **Gated** Roadmap & Continuity Plan  
-*(v1.0 – Deployed on Base | MIT Licensed | **Community-Governed** | Updated: November 16, 2025 – 06:51 PM NZDT)*
+*(v1.0 – Deployed on Base | MIT Licensed | **Community-Governed** | Updated: November 16, 2025 – 06:56 PM NZDT)*
 
 > **Burn $DRB → Uniswap V3 TWAP → Feed the Relief Pool**  
 > This is the **v1 core** on-chain fee harvester.  
@@ -170,11 +170,11 @@ MIT License - see LICENSE file for details.
 
 | Phase | Goal | Status | Vote Required | Target (NZDT) |
 |-------|------|--------|---------------|---------------|
-| **v1.0** | Core harvester: burn $DRB + feed relief pool | ✅ **Live on Base** | — | Nov 2025 |
-| **v1.1** | Uniswap V3 TWAP + slippage guard | ✅ **Merged** | — | Nov 2025 |
-| **v1.2** | On-chain vote to adjust treasury % | 🔄 **In Progress** | **Snapshot vote** | Dec 1, 2025 |
-| **v1.3** | React + wagmi dashboard (view burns, pool balance) | ⏳ **Planned** | **Discord poll** | Q1 2026 |
-| **v2.0** | Multi-chain (Base → Arbitrum) + bridge | ⏳ **Planned** | **On-chain proposal** | TBD |
+| **v1.0** | Core harvester: burn $DRB + feed relief pool | ✅ Live on Base | — | Nov 2025 |
+| **v1.1** | Uniswap V3 TWAP + slippage guard | ✅ Merged | — | Nov 2025 |
+| **v1.2** | On-chain vote to adjust treasury % | 🔄 In Progress | Snapshot vote | Dec 1, 2025 |
+| **v1.3** | React + wagmi dashboard (view burns, pool balance) | ⏳ Planned | Discord poll | Q1 2026 |
+| **v2.0** | Multi-chain (Base → Arbitrum) + bridge | ⏳ Planned | On-chain proposal | TBD |
 
 > **To propose a change**: Open an **Issue** with label `proposal` →
 
