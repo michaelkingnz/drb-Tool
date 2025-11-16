@@ -8,7 +8,18 @@ const privateKey = process.env.PRIVATE_KEY && /^0x[0-9a-fA-F]{64}$/.test(process
   : undefined;
 
 module.exports = {
-  solidity: "0.8.20",
+  solidity: {
+    version: "0.8.20",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200,
+        details: {
+          yul: false
+        }
+      }
+    }
+  },
   networks: {
     baseSepolia: {
       url: process.env.BASE_SEPOLIA_RPC_URL || "https://sepolia.base.org",

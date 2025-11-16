@@ -26,7 +26,7 @@ async function main() {
   const weth = "0x4200000000000000000000000000000000000006"; // Base WETH
 
   const Harvester = await hre.ethers.getContractFactory("DebtReliefHarvester");
-  const harvester = await Harvester.deploy(treasury, process.env.ROUTER_ADDRESS || "0x2626664c2603336E57B271c5C0b26F421741e481", process.env.DRB_TOKEN || "0xd7f5d9d299a18a17e5cc6f7ff44e1f5a0165349c", weth, process.env.ETH_PRICE_FEED || "0x71041dddad3595F9CEd3DcCFBe3D1F4b0a16Bb70", process.env.DRB_POOL || "0x0000000000000000000000000000000000000000");
+  const harvester = await Harvester.deploy(treasury, process.env.ROUTER_ADDRESS || "0x2626664c2603336E57B271c5C0b26F421741e481", process.env.DRB_TOKEN || "0xd7f5d9d299a18a17e5cc6f7ff44e1f5a0165349c", process.env.ETH_PRICE_FEED || "0x71041dddad3595F9CEd3DcCFBe3D1F4b0a16Bb70");
 
   await harvester.waitForDeployment();
   console.log("DebtReliefHarvester deployed to:", await harvester.getAddress());
