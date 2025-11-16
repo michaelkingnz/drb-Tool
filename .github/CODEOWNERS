@@ -1,0 +1,9 @@
+# Code owners for security review
+# All changes require review from the project owner
+* @michaelkingnz
+
+# Critical security files
+contracts/ @michaelkingnz
+scripts/ @michaelkingnz
+hardhat.config.js @michaelkingnz
+package.json @michaelkingnz
