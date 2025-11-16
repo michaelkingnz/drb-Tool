@@ -285,6 +285,21 @@ contract DebtReliefHarvester is ReentrancyGuard {
         swapDeadline = _deadline;
     }
 
+    // Emergency withdraw for stuck funds (ETH or tokens) - only treasury
+    function emergencyWithdraw(address token, uint256 amount, address to) external {
+        require(msg.sender == treasury, "Only treasury");
+        require(to != address(0), "Invalid recipient");
+        if (token == address(0)) {
+            // Withdraw ETH
+            require(address(this).balance >= amount, "Insufficient ETH balance");
+            payable(to).transfer(amount);
+        } else {
+            // Withdraw ERC20
+            IERC20(token).transfer(to, amount);
+        }
+        emit EmergencyWithdrawExecuted(token, amount, to);
+    }
+
     receive() external payable {
         _harvest(msg.value, msg.sender);
     }

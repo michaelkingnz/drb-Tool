@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "C:\\Users\\micha\\Desktop\\drb-tool\\contracts\\DebtReliefHarvester.sol": {
-      "lastModificationDate": 1763118105296,
-      "contentHash": "043dd5a5aba2cdaf7800c9a4f809870b",
+      "lastModificationDate": 1763277603369,
+      "contentHash": "4c60317e1a80bd207c940328b6f2bc47",
       "sourceName": "contracts/DebtReliefHarvester.sol",
       "solcConfig": {
         "version": "0.8.20",
