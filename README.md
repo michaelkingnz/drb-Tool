@@ -42,7 +42,7 @@ Users send ETH to the contract, which automatically:
 
 ### Installation
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/michaelkingnz/drb-Tool.git
 cd drb-tool
 npm install
 ```
@@ -125,8 +125,8 @@ BASESCAN_API_KEY=your_basescan_key
 ## 📊 Contract Addresses
 
 ### Base Sepolia (Testnet)
-- **Contract**: `0x88546aCf5B2a1CC71DCc1C2a0862959729534f6B`
-- **DRB Token**: `0x3ec2156D4c0A9CBdAB4a016633b7BcF6a8d68Ea2`
+- **Contract**: `0xE94b0608f6306eA9810675962fa1F0926E1a84C9`
+- **DRB Token**: `0x3bCD7F7597B0450F74cfF80A9C2b24a8D3e01D6D`
 - **Uniswap Router**: `0x2626664c2603336E57B271c5C0b26F421741e481`
 - **Treasury**: `0xcc52c6A9f64930D01538ab6056A722f5C914E603`
 
@@ -140,7 +140,7 @@ BASESCAN_API_KEY=your_basescan_key
 4. **Other 50% ETH** → Treasury (real debt relief)  
 
 **TWAP Protection**: 30-min average price used to prevent manipulation.  
-**Live on Base Sepolia**: [0x41c1...4DC3](https://sepolia.basescan.org/address/0x41c1c1997058697b93cCbFD3dfF46a64b0d74DC3)
+**Live on Base Sepolia**: [0xE94b0608f6306eA9810675962fa1F0926E1a84C9](https://sepolia.basescan.org/address/0xE94b0608f6306eA9810675962fa1F0926E1a84C9)
 
 ## 🤝 Contributing
 
@@ -205,4 +205,4 @@ This is experimental software. Use at your own risk. Always test on testnets fir
 4. **Other 50% ETH** → Treasury (real debt relief)  
 
 **TWAP Protection**: 30-min average price used to prevent manipulation.  
-**Live on Base Sepolia**: [0x41c1...4DC3](https://sepolia.basescan.org/address/0x41c1c1997058697b93cCbFD3dfF46a64b0d74DC3)
+**Live on Base Sepolia**: [0xE94b0608f6306eA9810675962fa1F0926E1a84C9](https://sepolia.basescan.org/address/0xE94b0608f6306eA9810675962fa1F0926E1a84C9)
