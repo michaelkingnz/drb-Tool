@@ -1,13 +1,3 @@
-# Scripts Usage
-
-- `npx hardhat run scripts/deploy.js --network baseSepolia`: Deploy the contract.
-- `npx hardhat run scripts/configurePool.js --network baseSepolia`: Configure Uniswap pool after deployment.
-- `npx hardhat run scripts/setRouterAndToken.js --network baseSepolia`: Set Uniswap router and DRB token.
-- `npx hardhat run scripts/getConfig.js --network baseSepolia`: Read current config from contract.
-- `npx hardhat run scripts/harvest.js --network baseSepolia`: Harvest ETH to burn DRB.
-- `npx hardhat run scripts/whoami.js --network baseSepolia`: Check signer address and balance.
-- `npx hardhat run scripts/checkBalance.js --network baseSepolia`: Check contract balance.
-
 # DRB Debt Relief Harvester
 
 **Decentralized Debt Relief Protocol**: Transform ETH donations into $DRB token burns and community debt relief funding on Base network.
@@ -194,15 +184,3 @@ MIT License - see LICENSE file for details.
 ## ⚠️ Disclaimer
 
 This is experimental software. Use at your own risk. Always test on testnets first.
-
-## Uniswap Swap + Burn Flow
-
-1. **Donation** → `harvest()` called with ETH  
-2. **50% ETH** → Swapped to $DRB via Uniswap V3  
-   - Router: `0x2626664c...`  
-   - Pool: DRB/WETH (0.3% fee)  
-3. **$DRB received** → Sent to `0x000...dEaD` (burned forever)  
-4. **Other 50% ETH** → Treasury (real debt relief)  
-
-**TWAP Protection**: 30-min average price used to prevent manipulation.  
-**Live on Base Sepolia**: [0xE94b0608f6306eA9810675962fa1F0926E1a84C9](https://sepolia.basescan.org/address/0xE94b0608f6306eA9810675962fa1F0926E1a84C9)
