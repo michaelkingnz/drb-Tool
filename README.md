@@ -42,7 +42,7 @@ Users send ETH to the contract, which automatically:
 
 ### Installation
 ```bash
-git clone https://github.com/michaelkingnz/drb-Tool.git
+git clone https://github.com/DRBHarvester/drb-Tool.git
 cd drb-tool
 npm install
 ```
