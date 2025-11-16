@@ -141,6 +141,43 @@ BASESCAN_API_KEY=your_basescan_key
 
 MIT License - see LICENSE file for details.
 
+## 📜 DRB Debt Relief Harvester – **Gated** Roadmap & Continuity Plan  
+*(v1.0 – Deployed on Base | MIT Licensed | **Community-Governed** | Updated: November 16, 2025 – 06:51 PM NZDT)*
+
+> **Burn $DRB → Uniswap V3 TWAP → Feed the Relief Pool**  
+> This is the **v1 core** on-chain fee harvester.  
+> **Only verified community members may merge to `master`.**
+
+---
+
+### 🛡️ **Security & Governance Rules** (Enforced via GitHub)
+
+| Rule | How It's Enforced |
+|------|-------------------|
+| **All PRs need 2 approvals** from `CODEOWNERS` | GitHub branch protection |
+| **No direct pushes to `master`** | Branch protection |
+| **Contract upgrades require on-chain vote** | `DebtReliefHarvester.proposeUpgrade()` |
+| **Emergency pause** | Multisig `onlyOwner` → `pause()` |
+
+> **`.github/CODEOWNERS`** (current trusted approvers):  
+> ```text
+> *       @DonnieLemon69
+> ```
+
+---
+
+### 🗺️ **Roadmap** – Community-Voted Milestones
+
+| Phase | Goal | Status | Vote Required | Target (NZDT) |
+|-------|------|--------|---------------|---------------|
+| **v1.0** | Core harvester: burn $DRB + feed relief pool | ✅ **Live on Base** | — | Nov 2025 |
+| **v1.1** | Uniswap V3 TWAP + slippage guard | ✅ **Merged** | — | Nov 2025 |
+| **v1.2** | On-chain vote to adjust treasury % | 🔄 **In Progress** | **Snapshot vote** | Dec 1, 2025 |
+| **v1.3** | React + wagmi dashboard (view burns, pool balance) | ⏳ **Planned** | **Discord poll** | Q1 2026 |
+| **v2.0** | Multi-chain (Base → Arbitrum) + bridge | ⏳ **Planned** | **On-chain proposal** | TBD |
+
+> **To propose a change**: Open an **Issue** with label `proposal` →
+
 ## ⚠️ Disclaimer
 
 This is experimental software. Use at your own risk. Always test on testnets first.
