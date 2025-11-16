@@ -1,8 +1,8 @@
 # Scripts Usage
 
 - `npx hardhat run scripts/deploy.js --network baseSepolia`: Deploy the contract.
-- `npx hardhat run scripts/setTreasury.js --network baseSepolia`: Set treasury address.
-- `npx hardhat run scripts/setRouterAndToken.js --network baseSepolia`: Set Uniswap router and DRB token (if not set in constructor).
+- `npx hardhat run scripts/configurePool.js --network baseSepolia`: Configure Uniswap pool after deployment.
+- `npx hardhat run scripts/setRouterAndToken.js --network baseSepolia`: Set Uniswap router and DRB token.
 - `npx hardhat run scripts/getConfig.js --network baseSepolia`: Read current config from contract.
 - `npx hardhat run scripts/harvest.js --network baseSepolia`: Harvest ETH to burn DRB.
 - `npx hardhat run scripts/whoami.js --network baseSepolia`: Check signer address and balance.
@@ -15,16 +15,18 @@ A decentralized protocol that burns $DRB tokens while funding real debt relief. 
 ## 🌟 What It Does
 
 Users send ETH to the contract, which automatically:
-- **50%** → Swaps to $DRB tokens and burns them permanently
+- **50%** → Swaps to $DRB tokens and burns them permanently (via Uniswap V3 with TWAP pricing)
 - **50%** → Sends to community-controlled treasury for debt relief
 
 ## 🏗️ Architecture
 
-### Smart Contract
-- **Security**: ReentrancyGuard, Pausable, Access Controls
-- **DEX Integration**: Uniswap V3 for ETH→DRB swaps
-- **Treasury**: 3-of-5 multi-sig controlled by community
-- **Transparency**: All transactions publicly verifiable
+### Smart Contract Features
+- **Security**: ReentrancyGuard, Pausable, Role-based Access Control, Timelocks
+- **DEX Integration**: Uniswap V3 with TWAP pricing for fair swaps
+- **Daily Caps**: 10 ETH global limit, 1 ETH per user limit to prevent abuse
+- **Emergency Recovery**: Multiple withdrawal mechanisms for stuck funds
+- **Gas Optimization**: Limits, unchecked math, variable caching, optimizer enabled
+- **Audit Ready**: Comprehensive NatSpec documentation and clean code
 
 ### Governance
 - **Community Votes**: Snapshot for debt relief allocation decisions
@@ -53,12 +55,23 @@ cp .env.example .env
 
 ### Deploy Contract
 ```bash
+# 1. Deploy the contract
 npx hardhat run scripts/deploy.js --network baseSepolia
+
+# 2. Configure Uniswap pool (creates DRB/WETH pool if needed)
+npx hardhat run scripts/configurePool.js --network baseSepolia
+
+# 3. Set router and token addresses
+npx hardhat run scripts/setRouterAndToken.js --network baseSepolia
 ```
 
-### Configure Contract
+### Test Contract
 ```bash
-npx hardhat run scripts/setRouterAndToken.js --network baseSepolia
+# Test harvest functionality
+npx hardhat run scripts/harvest.js --network baseSepolia
+
+# Check contract balance
+npx hardhat run scripts/checkEthBalance.js --network baseSepolia
 ```
 
 ## 📜 Scripts Usage
