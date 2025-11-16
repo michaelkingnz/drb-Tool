@@ -10,7 +10,7 @@
 
 # DRB Debt Relief Harvester
 
-A decentralized protocol that burns $DRB tokens while funding real debt relief. Built on Base network.
+**Decentralized Debt Relief Protocol**: Transform ETH donations into $DRB token burns and community debt relief funding on Base network.
 
 ## 🌟 What It Does
 
