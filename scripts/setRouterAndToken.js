@@ -18,10 +18,16 @@ async function main() {
   console.log("Using signer:", signer.address);
 
   const harvester = await hre.ethers.getContractAt("DebtReliefHarvester", deployed, signer);
-  const tx = await harvester.setRouterAndToken(router, token);
-  console.log("Submitted tx:", tx.hash);
-  await tx.wait();
-  console.log("Router and token set on-chain");
+  
+  // Schedule the change
+  console.log("Scheduling router and token change...");
+  const scheduleTx = await harvester.scheduleSetRouterAndToken(router, token);
+  console.log("Schedule tx:", scheduleTx.hash);
+  await scheduleTx.wait();
+  
+  console.log("Router and token change scheduled!");
+  console.log("Note: In production, wait 1 day then call executeSetRouterAndToken()");
+  console.log("For testing, you can execute immediately on local network");
 }
 
 main().catch((e) => {
